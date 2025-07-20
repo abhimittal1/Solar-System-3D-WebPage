@@ -1,0 +1,323 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Canvas Container */
+#canvas-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Control Panel Styles */
+#controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    min-width: 280px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.speed-slider {
+    flex: 1;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.speed-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.speed-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.speed-value {
+    min-width: 40px;
+    font-size: 11px;
+    color: #ccc;
+}
+
+.main-controls {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styles */
+.btn {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.pause {
+    background: linear-gradient(45deg, #f44336, #da190b);
+}
+
+.btn.theme {
+    background: linear-gradient(45deg, #2196F3, #0b7dda);
+}
+
+/* Planet Controls Grid */
+.planet-controls {
+    display: grid;
+    gap: 12px;
+}
+
+/* Info Panel */
+#info {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    max-width: 300px;
+}
+
+#info h4 {
+    margin-bottom: 8px;
+    color: #4CAF50;
+    font-size: 14px;
+}
+
+#info p {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 1001;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.tooltip strong {
+    color: #4CAF50;
+}
+
+/* Light Theme */
+.light-theme {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.light-theme #controls,
+.light-theme #info {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.light-theme .control-group label {
+    color: #333;
+}
+
+.light-theme .speed-value {
+    color: #666;
+}
+
+.light-theme .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .tooltip strong {
+    color: #2196F3;
+}
+
+.light-theme #info h4 {
+    color: #2196F3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #controls {
+        width: calc(100% - 40px);
+        max-width: 320px;
+        max-height: 60vh;
+        font-size: 11px;
+    }
+    
+    #info {
+        width: calc(100% - 40px);
+        max-width: 300px;
+        font-size: 11px;
+        bottom: 10px;
+        left: 20px;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .speed-slider::-webkit-slider-thumb {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .speed-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #controls {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+        max-height: 50vh;
+        padding: 15px;
+    }
+    
+    #info {
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+        bottom: 10px;
+    }
+    
+    .main-controls {
+        text-align: center;
+    }
+    
+    .btn {
+        width: 80px;
+        margin: 2px;
+    }
+}
+
+/* Scrollbar Styling */
+#controls::-webkit-scrollbar {
+    width: 6px;
+}
+
+#controls::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#controls::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+#controls::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animation for smooth transitions */
+#controls, #info {
+    transition: all 0.3s ease;
+}
+
+.control-group {
+    transition: opacity 0.2s ease;
+}
+
+.control-group:hover {
+    opacity: 0.9;
+}
+
+/* Focus styles for accessibility */
+.speed-slider:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+.btn:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
